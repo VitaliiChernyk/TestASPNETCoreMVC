@@ -34,7 +34,7 @@ namespace TestPage.Controllers
 
         }
         [Route("logout")]
-        [HttpGet, ValidateAntiForgeryToken]
+        //[HttpGet, ValidateAntiForgeryToken]
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("username");
