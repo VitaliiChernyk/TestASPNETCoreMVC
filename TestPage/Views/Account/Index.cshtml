@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+@*@using Microsoft.AspNetCore.Mvc;*@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h3> Login Page</h3>
+    @ViewBag.error
+    <form method="post" asp-controller="account" asp-action="login">
+        <table border="0" cellpadding="2" cellspacing="2">
+            <tbody>
+                <tr>
+                    <td>User Name</td>
+                    <td> <input type="text" name="userName"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" value="Login"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

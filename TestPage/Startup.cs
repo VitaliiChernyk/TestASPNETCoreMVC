@@ -26,11 +26,21 @@ namespace TestPage
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSession();
+            app.UseStaticFiles();
 
-            app.Run(async (context) =>
+            app.UseMvc(routes =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                routes.MapRoute(
+                    name:"default",
+                    template:"{controller=Acount}/{action=Index}/{id?}"
+                    );
+
             });
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync("Hello World!");
+            //});
         }
     }
 }
