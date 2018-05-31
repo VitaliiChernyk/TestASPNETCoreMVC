@@ -33,7 +33,7 @@ namespace TestPage
             {
                 routes.MapRoute(
                     name:"default",
-                    template:"{controller=Acount}/{action=Index}/{id?}"
+                    template:"{controller=home}/{action=index}/{id?}"
                     );
 
             });

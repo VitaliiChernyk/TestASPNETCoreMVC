@@ -1,19 +1,22 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
 }
 @using Microsoft.AspNetCore.Http
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />*@
+@section head{
     <title>Success</title>
-</head>
-<body>
-    <h3> Success Page</h3>
+}
+@*</head>
+    <body>*@
+
+<h3> Success Page</h3>
     Welcome @Context.Session.GetString("username")
     <br>
     <a asp-controller="account" asp-action="logout">Logout</a>
-</body>
-</html>
+    @*</body>
+    </html>*@

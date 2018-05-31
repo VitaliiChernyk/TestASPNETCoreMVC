@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("head", false)
+</head>
+<body>
+    <a asp-controller="home" asp-action="index">Home</a>
+    <a asp-controller="account" asp-action="index">Login</a>
+    <a asp-controller="about" asp-action="index">About</a>
+    <div>
+        @RenderBody()
+    </div>
+    Copyright MY Site
+</body>
+</html>
