@@ -6,15 +6,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace TestPage.Models
 {
-    public class CustomerMap
+    public class ProductMap
     {
-        public CustomerMap(EntityTypeBuilder<Product> entityBuilder)
+        public ProductMap(EntityTypeBuilder<Product> entityBuilder)
         {
             entityBuilder.HasKey(t => t.Id);
             entityBuilder.Property(t => t.Name).IsRequired();
-            //entityBuilder.Property(t=>t.Photo)
+            entityBuilder.Property(t=>t.Photo)
             entityBuilder.Property(t => t.Price).IsRequired();
             entityBuilder.Property(t => t.Quantity).IsRequired();
+            entityBuilder.HasOne(t => t.ProductProfile).WithOne(p => p.Product).HasForeignKey<ProductProfile>(x => x.Id);
         }
     }
 }

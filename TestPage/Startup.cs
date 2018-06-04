@@ -8,17 +8,20 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using TestPage.DbEntities;
+using Microsoft.Extensions.Configuration;
 
 namespace TestPage
 {
     public class Startup
     {
+        private IConfiguration Configuration { get; set; }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
             services.AddSession();
+            services.AddDbContext<CRUDContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,8 +37,8 @@ namespace TestPage
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name:"default",
-                    template:"{controller=home}/{action=index}/{id?}"
+                    name: "default",
+                    template: "{controller=home}/{action=index}/{id?}"
                     );
 
             });
