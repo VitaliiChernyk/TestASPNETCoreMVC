@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TestPage.Models;
+using OA.Data;
+using OA.Repo;
 using TestPage;
 
 namespace OA.Service
@@ -9,29 +10,39 @@ namespace OA.Service
     public class ProductService : IProductService
     {
         private IRepository<Product> productRepository;
+        private IRepository<ProductProfile> productProfileRepository;
+        public ProductService(IRepository<Product> productRepository, IRepository<ProductProfile> productProfileRepository)
+        {
+            this.productRepository = productRepository;
+            this.productProfileRepository = productProfileRepository;
+        }
         public void DeleteProduct(long id)
         {
-            throw new NotImplementedException();
+            ProductProfile productProfile = productProfileRepository.Get(id);
+            productProfileRepository.Remove(productProfile);
+            Product product = GetProduct(id);
+            productRepository.Remove(product);
+            productRepository.SaveChanges();
         }
 
         public Product GetProduct(long id)
         {
-            throw new NotImplementedException();
+            return productRepository.Get(id);
         }
 
         public IEnumerable<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            return productRepository.GetAll();
         }
 
         public void InsertProduct(Product product)
         {
-            throw new NotImplementedException();
+            productRepository.Insert(product);
         }
 
         public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            productRepository.Update(product);
         }
     }
 }
